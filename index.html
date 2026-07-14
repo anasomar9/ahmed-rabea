@@ -72,6 +72,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none; color:
   align-self:flex-start; font-size:12px; letter-spacing:3px; color:var(--amber);
   border:1px solid rgba(255,181,69,.4); padding:7px 16px; border-radius:22px;
   text-transform:uppercase; font-weight:700; margin-bottom:22px; display:flex; align-items:center; gap:8px;
+  max-width:100%; white-space:normal; flex-wrap:wrap; line-height:1.6;
 }
 .landing-text .eyebrow-tag::before{content:""; width:7px; height:7px; border-radius:50%; background:var(--amber); box-shadow:0 0 8px var(--amber);}
 .landing-name{
@@ -198,7 +199,7 @@ button{font-family:inherit; cursor:pointer; border:none; background:none; color:
 }
 .stat-hero .ticket-perf{position:absolute; left:0; top:20%; bottom:20%; width:1px; background-image:repeating-linear-gradient(to bottom, var(--line-strong) 0 6px, transparent 6px 12px);}
 .stat-hero .tag{align-self:flex-start; font-size:11px; letter-spacing:2px; color:var(--amber); border:1px solid rgba(255,181,69,.4); padding:5px 12px; border-radius:20px; text-transform:uppercase; font-weight:700;}
-.stat-hero .big-num{font-size:70px; line-height:1; color:var(--bone); margin-top:16px;}
+.stat-hero .big-num{font-size:clamp(38px, 9vw, 70px); line-height:1; color:var(--bone); margin-top:16px; word-break:break-word;}
 .stat-hero .big-num small{font-size:22px; color:var(--amber); margin-right:6px;}
 .stat-hero .label{color:var(--steel); font-size:13.5px; margin-top:8px;}
 
@@ -257,6 +258,21 @@ button{font-family:inherit; cursor:pointer; border:none; background:none; color:
 .count-chip b{color:var(--ember); font-family:'Teko'; font-size:17px;}
 
 .table-wrap{background:var(--charcoal); border:1px solid var(--line); border-radius:var(--radius); overflow:auto; max-height:70vh; box-shadow:var(--shadow-lg);}
+
+.client-cards{display:none; flex-direction:column; gap:14px;}
+.c-card{
+  background:linear-gradient(160deg, var(--charcoal) 0%, var(--charcoal-2) 100%); border:1px solid var(--line);
+  border-radius:14px; padding:18px; position:relative; overflow:hidden;
+}
+.c-card::before{content:""; position:absolute; right:0; top:16px; bottom:16px; width:3px; background:var(--ember); border-radius:0 3px 3px 0;}
+.c-card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:14px;}
+.c-card-name{font-size:16.5px; color:var(--bone); font-weight:700;}
+.c-card-code{font-family:'Teko'; color:var(--amber); font-size:14px; letter-spacing:.5px; margin-top:2px;}
+.c-card-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 14px; margin-bottom:14px; padding-bottom:14px; border-bottom:1px dashed var(--line-strong);}
+.c-card-grid .k{display:block; font-size:10.5px; color:var(--steel); margin-bottom:3px;}
+.c-card-grid .v{font-size:13.5px; color:var(--bone-dim); font-weight:600;}
+.c-card-actions{display:flex; gap:8px; flex-wrap:wrap;}
+.c-card-actions .act-btn{width:38px; height:38px; margin-left:0;}
 table{border-collapse:separate; border-spacing:0; width:100%; min-width:1500px;}
 thead th{position:sticky; top:0; z-index:3; background:#1a1720; color:var(--steel); font-size:11.5px; letter-spacing:.6px; text-transform:uppercase; font-weight:700; text-align:right; padding:15px 16px; border-bottom:1px solid var(--line-strong); white-space:nowrap;}
 tbody td{padding:15px 16px; font-size:13.5px; color:var(--bone-dim); border-bottom:1px solid var(--line); white-space:nowrap;}
@@ -302,9 +318,9 @@ tbody tr:hover td.actions-cell{background:#1d1720;}
 .dossier.open{transform:translateX(0);}
 .dossier-head{position:relative; padding:30px 30px 26px; overflow:hidden; background:radial-gradient(circle at 90% 0%, rgba(255,77,28,.28), transparent 55%), var(--charcoal-2); border-bottom:1px solid var(--line);}
 .dossier-head .barcode{position:absolute; inset-inline:0; bottom:0; height:10px; background-image:repeating-linear-gradient(90deg, var(--charcoal-3) 0 2px, transparent 2px 5px, var(--charcoal-3) 5px 7px, transparent 7px 11px); opacity:.6;}
-.dossier-close{position:absolute; top:20px; left:20px; width:36px; height:36px; border-radius:50%; background:var(--charcoal-3); display:flex; align-items:center; justify-content:center; color:var(--bone-dim); border:1px solid var(--line-strong);}
+.dossier-close{position:absolute; top:20px; left:20px; width:36px; height:36px; border-radius:50%; background:var(--charcoal-3); display:flex; align-items:center; justify-content:center; color:var(--bone-dim); border:1px solid var(--line-strong); z-index:2;}
 .dossier-close:hover{color:var(--ember); border-color:var(--ember);}
-.dossier-stamp{position:absolute; top:24px; left:64px; transform:rotate(-9deg); border:2px solid var(--ember); color:var(--ember); font-family:'Lalezar'; font-size:13px; padding:5px 12px; border-radius:6px; letter-spacing:1px; opacity:.9;}
+.dossier-stamp{position:absolute; top:26px; left:112px; transform:rotate(-9deg); border:2px solid var(--ember); color:var(--ember); font-family:'Lalezar'; font-size:13px; padding:5px 12px; border-radius:6px; letter-spacing:1px; opacity:.9; white-space:nowrap;}
 .dossier-id{display:flex; align-items:center; gap:16px;}
 .dossier-avatar{width:64px; height:64px; border-radius:14px; background:var(--charcoal-3); border:2px solid var(--ember); display:flex; align-items:center; justify-content:center; font-family:'Teko'; font-size:26px; color:var(--amber); flex:0 0 auto;}
 .dossier-id h3{font-size:26px; color:var(--bone);}
@@ -389,14 +405,55 @@ tbody tr:hover td.actions-cell{background:#1d1720;}
   .sidebar-scrim.open{opacity:1; pointer-events:auto;}
   .mobile-topbar{display:flex; align-items:center; justify-content:space-between; padding:16px 20px; background:var(--charcoal); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:30;}
   .mobile-topbar .hamb{width:40px; height:40px; border-radius:10px; background:var(--charcoal-3); display:flex; align-items:center; justify-content:center; color:var(--bone); border:1px solid var(--line-strong);}
-  .main{padding:22px 18px 70px;}
-  .page-hero h2{font-size:28px;}
+  .main{padding:20px 16px 70px;}
+  .page-hero{align-items:flex-start; margin-bottom:22px; padding-bottom:18px; gap:14px;}
+  .page-hero h2{font-size:26px;}
+  .page-hero p.sub{font-size:13.5px;}
+  .hero-cta{width:100%;}
+  .hero-cta .btn{flex:1; justify-content:center;}
+  /* iOS Safari auto-zooms the page when a form field's font-size is under 16px —
+     forcing 16px here stops that jarring zoom-in on every tap */
+  .search-box input, .select-wrap select,
+  .field input, .field select, .field textarea,
+  .inline-form .field input, .inline-form .field select{
+    font-size:16px;
+  }
+  .toolbar{flex-direction:column; align-items:stretch; gap:10px;}
+  .toolbar .select-wrap select{width:100%;}
+  .count-chip{text-align:center;}
+  /* below 760px the wide data table is replaced by a stacked card list — see 760px breakpoint */
+  .dossier-quickstats{gap:14px;}
+  .tabs{padding-inline:20px;}
+  .tab-panel{padding:20px 20px 32px;}
+  .stat-grid{gap:12px;}
+  .card{padding:18px;}
+  .panel{padding:18px;}
+}
+@media (max-width:760px){
+  .table-wrap{display:none;}
+  .client-cards{display:flex;}
 }
 @media (max-width:640px){
   .form-grid{grid-template-columns:1fr;}
   .info-grid{grid-template-columns:1fr;}
   .dossier, .form-panel{width:100vw;}
-  .stat-mini .val{font-size:28px;}
+  .stat-grid{grid-template-columns:1fr;}
+  .stat-hero{min-height:180px;}
+  .stat-hero .big-num{font-size:52px;}
+  .stat-mini .val{font-size:30px;}
+  .inline-form{grid-template-columns:1fr;}
+  .dossier-head{padding:22px 18px 18px;}
+  .dossier-stamp{left:auto; right:18px; top:64px;}
+  .dossier-edit-btn{left:62px;}
+  .dossier-id h3{font-size:22px;}
+  .landing-text{padding:36px 22px; min-width:0;}
+  .landing-name{font-size:clamp(38px, 11vw, 60px);}
+  .landing-tag{font-size:14px; margin:16px 0 24px;}
+  .landing .btn-primary{width:100%; justify-content:center;}
+  .c-card-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:380px){
+  .c-card-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -579,6 +636,7 @@ tbody tr:hover td.actions-cell{background:#1d1720;}
           <tbody id="clientsTbody"></tbody>
         </table>
       </div>
+      <div class="client-cards" id="clientCards"></div>
       <div class="empty-state" id="emptyState" style="display:none;">
         <i class="fa-solid fa-user-plus"></i>
         <p>لا يوجد عملاء مسجّلين بعد. ابدأ بإضافة أول عميل لك.</p>
@@ -833,6 +891,31 @@ function renderTable(){
       <td class="code-cell">${c.code||''}</td>
     </tr>`;
   }).join('');
+
+  const cardsWrap = document.getElementById('clientCards');
+  cardsWrap.innerHTML = filtered.map(c => {
+    const dl = daysLeft(c.end_date);
+    return `<div class="c-card">
+      <div class="c-card-top">
+        <div><div class="c-card-name">${c.name||''}</div><div class="c-card-code">${c.code||''}</div></div>
+        <span class="pill ${statusPillClass(c.status)}">${c.status||''}</span>
+      </div>
+      <div class="c-card-grid">
+        <div><span class="k">الهدف</span><span class="v">${c.goal||'—'}</span></div>
+        <div><span class="k">تاريخ الانتهاء</span><span class="v">${c.end_date||'—'}</span></div>
+        <div><span class="k">الأيام المتبقية</span><span class="v">${dl<0?0:dl} يوم</span></div>
+        <div><span class="k">السعر</span><span class="v">${fmtMoney(c.price)}</span></div>
+        <div><span class="k">حالة الدفع</span><span class="v pay-pill ${payPillClass(c.pay_status)}">${c.pay_status||'—'}</span></div>
+        <div><span class="k">واتساب</span><span class="v">${c.wa||'—'}</span></div>
+      </div>
+      <div class="c-card-actions">
+        <button class="act-btn" title="عرض" onclick="openDossier('${c.id}')"><i class="fa-solid fa-eye"></i></button>
+        <button class="act-btn" title="تعديل" onclick="openClientForm('edit','${c.id}')"><i class="fa-solid fa-pen"></i></button>
+        <button class="act-btn wa" title="واتساب" onclick="openWhatsApp('${c.id}')"><i class="fa-brands fa-whatsapp"></i></button>
+        <button class="act-btn del" title="حذف" onclick="deleteClient('${c.id}')"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>`;
+  }).join('');
 }
 document.getElementById('searchInput').addEventListener('input', renderTable);
 document.getElementById('filterStatus').addEventListener('change', renderTable);
@@ -1080,3 +1163,5 @@ loadClients();
 </script>
 </body>
 </html>
+
+
